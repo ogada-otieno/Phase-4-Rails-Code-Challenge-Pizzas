@@ -1,24 +1,78 @@
-# README
+# SA-01: Phase 4 Code Challenge: Pizzas
+## Learning Goals
+Implement a 'mini' Rails application that implements associations.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+For this project, I am required to:
 
-Things you may want to cover:
+Create a Rails API backend. Have at least three resources (three DB tables).
 
-* Ruby version
+## MODEL Deliverables and Relationships
+Create the following relationships:
 
-* System dependencies
+* A Restaurant has many Pizzas through RestaurantPizza
+* A Pizza has many Restaurants through RestaurantPizza
+* A RestaurantPizza belongs to a Restaurant and belongs to * a Pizza
 
-* Configuration
+![](/assets/erd.png)
 
-* Database creation
 
-* Database initialization
+## Deployment Link
+This link can be easily used to test the different routes/requests available to the API server. If you want to have the project in your development environment, proceed to set it up as outlined in the section that follows.
 
-* How to run the test suite
+```bash
+https://pizza-server-20v2.onrender.com
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Setup
+In order to use this repository, you need the following:
+* Operating System (Windows 10+, Linux 3.8+, or MacOS X 10.7+)
+* An account on Postman API Platform. CLICK HERE TO CREATE ONE
+* RAM >= 4GB
+* Free Space >= 2GB
 
-* Deployment instructions
+1. Fork and clone the repository.
+2. Ensure the ruby gems are setup in your machine
+```
+bundle install
+```
+3. Perform any pending database migrations and seed data
+```
+rails db:migrate db:seed
+```
+4. Make sure no other application is using PORT 3000 and run the application
+```
+rails s
+```
+5. Using your preferred API testing platform (Postman, ThunderClient, etc), proceed to test the various routes available to the API. This will be your base URL:
+```
+http://localhost:3000
+```
+## validations Deliverables
+Add validations to the `RestaurantPizza` model:
 
-* ...
+- must have a `price` between 1 and 30
+
+## Routes
+Set up the following routes. Make sure to return JSON data in the format
+specified along with the appropriate HTTP verb. Also, ensure that errors are returned and handled appropriately. This includes and is not limited to necessary status codes.
+
+```
+GET /restaurants
+GET /restaurants/:id
+DELETE /restaurants/:id
+GET /pizzas
+POST /restaurant_pizzas
+```
+
+## Authors
+Project contributed to and maintained by:
+- [Rodgers Ogada](https://github.com/ogada-otieno)
+
+## License
+
+### ISC License (ISC)
+
+[![License: ICL](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+
+
