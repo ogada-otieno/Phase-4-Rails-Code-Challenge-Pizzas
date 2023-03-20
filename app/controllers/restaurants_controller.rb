@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found_response_message
+    # protect_from_forgery with: :null_session
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
     # GET /restaurants
     def index
         restaurants = Restaurant.all
@@ -8,20 +9,24 @@ class RestaurantsController < ApplicationController
 
     # GET /restaurants/:id
     def show
-        restaurant = Restaurant.find_by_id(params[:id])
+        restaurant = find_restaurant
         render json: restaurant, status: :ok 
     end
 
     # DELETE /restaurants/:id
     def destroy
-        restaurant = Restaurant.find_by_id(params[:id])
+        restaurant = find_restaurant
         restaurant.destroy
         head :no_content
     end
 
     private
 
-    def not_found_response_message
+    def find_restaurant
+        Restaurant.find(params[:id])
+    end
+
+    def not_found_response
         render json: {error: "Restaurant not found"}, status: :not_found
     end
 end

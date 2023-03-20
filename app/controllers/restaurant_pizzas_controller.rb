@@ -1,14 +1,10 @@
 class RestaurantPizzasController < ApplicationController
-    # turns on request forgery protection and checks for the CSRF token in non-GET and non-HEAD requests
-    # if the application does not specify a strategy, it will default to nulling the session
-    protect_from_forgery with: :null_session
-    
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     # POST /restaurant_pizzas
     def create
         restaurant_pizza = RestaurantPizza.create(restaurant_pizza_params)
-        render json: restaurant_pizza, status: :created
+        render json: restaurant_pizza.pizza, status: :created
     end
 
     private
