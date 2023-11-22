@@ -36,7 +36,7 @@ puts 'Seeding restaurant pizzas...'
       {
         price: rand(1...30),
         pizza_id: rand(1..20),
-        restaurant_id: rand(1..20),
+        restaurant_id: rand(1..20)
       },
     ],
   )
